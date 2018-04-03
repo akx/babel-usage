@@ -1,0 +1,13 @@
+SELECT
+  R.*,
+  C.content
+FROM
+  `babel-usage.babelusage.requirements_and_setup_pys` R
+JOIN
+  `bigquery-public-data.github_repos.contents` C
+ON
+  (R.id = C.id)
+WHERE
+  C.content LIKE '%babel%' OR C.content LIKE '%Babel%'
+ORDER BY
+  R.stars DESC

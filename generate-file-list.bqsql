@@ -1,0 +1,4 @@
+SELECT F.repo_name, F.id, F.path, S.stars
+FROM `bigquery-public-data.github_repos.files` F
+LEFT JOIN `fh-bigquery.github_extracts.repo_stars` S ON (S.repo_name = F.repo_name)
+WHERE (path LIKE '%requirements.txt' OR path LIKE '%setup.py')
